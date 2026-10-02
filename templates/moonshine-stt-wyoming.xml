@@ -23,7 +23,7 @@ Das GHCR-Image ist veröffentlicht. Deutsch/Small wurde praktisch validiert. Die
   <Changes>Erste Community-Applications-Version. GHCR-Image veröffentlicht; Deutsch/Small praktisch validiert.</Changes>
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/marco-taylor/moonshine-stt-wyoming/main/templates/moonshine-stt-wyoming.xml</TemplateURL>
-  <Icon/>
+  <Icon>https://raw.githubusercontent.com/marco-taylor/moonshine-stt-wyoming/main/icons/moonshine-stt.svg</Icon>
   <License>Apache-2.0</License>
   <ExtraParams>--user=99:100 --read-only --cap-drop=ALL --security-opt=no-new-privileges --tmpfs /tmp:rw,noexec,nosuid,size=16m --restart=unless-stopped --log-opt max-size=10m --log-opt max-file=2</ExtraParams>
   <PostArgs/>
