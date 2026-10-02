@@ -1,0 +1,58 @@
+{
+  "moonshine-0.1.5-LICENSE.txt": {
+    "source_url": "https://raw.githubusercontent.com/moonshine-ai/moonshine/v0.1.5/LICENSE",
+    "sha256": "fa7d1174dd8af6a7cd280be20b80d10095ed4c19b5b20b61a7715c3ad790dc5f",
+    "bytes": 14180
+  },
+  "Eigen-COPYING.MPL2": {
+    "source_url": "https://raw.githubusercontent.com/moonshine-ai/moonshine/v0.1.5/core/third-party/Eigen/COPYING.MPL2",
+    "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85",
+    "bytes": 16726
+  },
+  "doctest-LICENSE.txt": {
+    "source_url": "https://raw.githubusercontent.com/moonshine-ai/moonshine/v0.1.5/core/third-party/doctest/LICENSE.txt",
+    "sha256": "0fe0b331fa1513dcce8604ff1fa925f32d1cea17d8aeb1c2471fad40d291adc5",
+    "bytes": 1086
+  },
+  "kaldi-native-fbank-LICENSE.txt": {
+    "source_url": "https://raw.githubusercontent.com/moonshine-ai/moonshine/v0.1.5/core/third-party/kaldi-native-fbank/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  "kissfft-COPYING.txt": {
+    "source_url": "https://raw.githubusercontent.com/moonshine-ai/moonshine/v0.1.5/core/third-party/kissfft/COPYING",
+    "sha256": "a2840585f8411be8e6826a31ef15ae65c950bd74a2437a73b013398a934ad0c6",
+    "bytes": 246
+  },
+  "nlohmann-LICENSE.MIT": {
+    "source_url": "https://raw.githubusercontent.com/moonshine-ai/moonshine/v0.1.5/core/third-party/nlohmann/LICENSE.MIT",
+    "sha256": "86b998c792894ccb911a1cb7994f7a9652894e7a094c0b5e45be2f553f45cf14",
+    "bytes": 1076
+  },
+  "onnxruntime-LICENSE.txt": {
+    "source_url": "https://raw.githubusercontent.com/moonshine-ai/moonshine/v0.1.5/core/third-party/onnxruntime/LICENSE.txt",
+    "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+    "bytes": 1073
+  },
+  "utf8cpp-LICENSE.txt": {
+    "source_url": "https://raw.githubusercontent.com/moonshine-ai/moonshine/v0.1.5/core/third-party/utf-8/LICENSE.txt",
+    "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "bytes": 1338
+  },
+  "utf8proc-LICENSE.md": {
+    "source_url": "https://raw.githubusercontent.com/moonshine-ai/moonshine/v0.1.5/core/third-party/utf8proc/LICENSE.md",
+    "sha256": "3b510150d34f248a221bb88e1d811238d6c6c18b51231822c42974c39bb07256",
+    "bytes": 5125
+  },
+  "onnxruntime-1.23.2-ThirdPartyNotices.txt": {
+    "source_url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/ThirdPartyNotices.txt",
+    "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc",
+    "bytes": 326866
+  },
+  "kissfft-BSD-3-Clause.txt": {
+    "source_url": "https://raw.githubusercontent.com/mborgerding/kissfft/master/LICENSES/BSD-3-Clause",
+    "upstream_blob_sha": "b8d56812171eb511e50d06698700f8e8b5fb6c41",
+    "sha256": "4d6bcab46f27d6d0c878e8305d4bdcfe040d52bf6656b9771f04c9fb9902c0ed",
+    "bytes": 1830
+  }
+}

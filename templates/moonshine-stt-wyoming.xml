@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container version="2">
+  <Name>moonshine-stt-wyoming</Name>
+  <Repository>ghcr.io/marco-taylor/moonshine-stt-wyoming:latest</Repository>
+  <Registry>https://ghcr.io/marco-taylor/moonshine-stt-wyoming</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/marco-taylor/moonshine-stt-wyoming/issues</Support>
+  <Project>https://github.com/marco-taylor/moonshine-stt-wyoming</Project>
+  <ReadMe>https://github.com/marco-taylor/moonshine-stt-wyoming#readme</ReadMe>
+  <Overview>Lokaler mehrsprachiger Speech-to-Text-Dienst für Home Assistant über Wyoming. CPU-Betrieb, empfohlen für Intel N100 mit einem Thread.
+
+Standardmodell: Small Streaming Deutsch. Nur das ausgewählte fehlende Modell wird beim ersten Start automatisch heruntergeladen. Vorhandene und kompatible manuell installierte Modelle werden wiederverwendet. Tiny ist ausschließlich eine ausdrücklich auswählbare Alternative.
+
+Modelle bleiben persistent unter /app/models außerhalb des Images. Bestehende unvollständige oder beschädigte Dateien werden nicht überschrieben. Das Modellverzeichnis muss für UID/GID 99:100 lesbar und für Downloads schreibbar sein.
+
+RELEASE-ENTWURF: GitHub/GHCR-Adressen sind geplant, noch nicht veröffentlicht. Deutsch/Small ist praktisch validiert. Die übrigen registrierten Modelle sind strukturell unterstützt, aber in der aktuellen Version noch nicht praktisch validiert. Nicht für Community Applications eingereicht. Vor Start Port 10300 auf Belegung prüfen; einen bestehenden Dienst niemals verdrängen.</Overview>
+  <Category>AI: HomeAutomation:</Category>
+  <ExtraSearchTerms>stt speech-to-text deutsch german moonshine home assistant wyoming</ExtraSearchTerms>
+  <Changes>Lokaler Phase-8-Release-Entwurf; noch keine Veröffentlichung.</Changes>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/marco-taylor/moonshine-stt-wyoming/main/templates/moonshine-stt-wyoming.xml</TemplateURL>
+  <Icon/>
+  <License>Apache-2.0</License>
+  <ExtraParams>--user=99:100 --read-only --cap-drop=ALL --security-opt=no-new-privileges --tmpfs /tmp:rw,noexec,nosuid,size=16m --restart=unless-stopped --log-opt max-size=10m --log-opt max-file=2</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Date>2026-10-02</Date>
+  <Requires>linux/amd64, Unraid mit Docker. Initialer Modelldownload benötigt Internetzugang. Image muss nach einer späteren Veröffentlichung verfügbar sein. Wyoming bietet keine eigene Authentifizierung; nur im vertrauenswürdigen LAN bereitstellen.</Requires>
+  <Config Name="Wyoming-STT-Port" Target="10300" Default="10300" Mode="tcp" Description="Host-Port für Home Assistant. Standard 10300. Vor Start auf Belegung prüfen. Der interne Container-Port bleibt 10300." Type="Port" Display="always" Required="true" Mask="false">10300</Config>
+  <Config Name="Moonshine-Modelle" Target="/app/models" Default="/mnt/user/appdata/moonshine-stt-wyoming/models" Mode="rw" Description="Persistenter Modellordner. Modelle bleiben bei Image-Updates erhalten. Für Downloads Schreibrechte für UID/GID 99:100 erforderlich; kein automatisches Ändern vorhandener Dateirechte." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/moonshine-stt-wyoming/models</Config>
+  <Config Name="STT-Modell" Target="MOONSHINE_MODEL" Default="small-streaming-de|medium-streaming-en|small-streaming-en|small-streaming-es|small-streaming-ja|tiny-streaming-ar|tiny-streaming-de|tiny-streaming-en|tiny-streaming-es|tiny-streaming-ja|tiny-streaming-tl|tiny-streaming-vi|tiny-streaming-zh" Mode="" Description="Small Streaming Deutsch ist Standard. Bei Modellwechsel auch das Sprachfeld passend zum Suffix einstellen. Nur das ausgewählte fehlende Modell wird installiert; niemals zusätzliche Modelle." Type="Variable" Display="always" Required="true" Mask="false">small-streaming-de</Config>
+  <Config Name="Sprache" Target="MOONSHINE_LANGUAGE" Default="de|ar|en|es|ja|tl|vi|zh" Mode="" Description="Muss zur Sprache des ausgewählten Modells passen (Suffix im Modellnamen). Deutsch de bleibt Standard. Falsche Kombinationen verweigern den Start; beide Felder gemeinsam ändern." Type="Variable" Display="always" Required="true" Mask="false">de</Config>
+  <Config Name="Fehlendes Modell herunterladen" Target="MOONSHINE_AUTO_DOWNLOAD" Default="1|0" Mode="" Description="1: ausschließlich fehlendes ausgewähltes Modell beim Start herunterladen. 0: Offline-Betrieb; fehlendes Modell führt zu verständlichem Startfehler. Gültige vorhandene Modelle werden nie erneut heruntergeladen." Type="Variable" Display="always" Required="true" Mask="false">1</Config>
+  <Config Name="CPU-Modus" Target="MOONSHINE_THREADS" Default="1|4" Mode="" Description="1: empfohlener Einzelthread-Modus auf Intel N100. 4: Runtime-Automatik, kein garantierter harter Thread-Zähler; auf diesem N100 langsamer." Type="Variable" Display="always" Required="true" Mask="false">1</Config>
+  <Config Name="Gleichzeitige STT-Anfragen" Target="WYOMING_STT_CONCURRENT_REQUESTS" Default="1" Mode="" Description="Auf Intel N100 bei 1 belassen. Erlaubt 1–8 Streams; native Inferenz bleibt seriell." Type="Variable" Display="advanced" Required="true" Mask="false">1</Config>
+  <Config Name="Interner Wyoming-Port" Target="WYOMING_PORT" Default="10300" Mode="" Description="Standard 10300. Normalerweise nicht ändern. Bei Änderung muss auch das Container-Ziel der Portzuordnung angepasst werden." Type="Variable" Display="advanced" Required="true" Mask="false">10300</Config>
+  <Config Name="Modellpfad im Container" Target="MOONSHINE_MODEL_DIR" Default="/app/models" Mode="" Description="Standard /app/models. Muss zum Container-Ziel des persistenten Modell-Mounts passen." Type="Variable" Display="advanced" Required="true" Mask="false">/app/models</Config>
+  <Config Name="Maximale Audiodauer" Target="MAX_AUDIO_SECONDS" Default="30" Mode="" Description="Maximale Länge einer Anfrage in Sekunden; Standard 30, höchstens 300." Type="Variable" Display="advanced" Required="true" Mask="false">30</Config>
+  <Config Name="Logstufe" Target="LOG_LEVEL" Default="INFO|WARNING|ERROR|DEBUG" Mode="" Description="Standard INFO. Audiodaten werden niemals protokolliert." Type="Variable" Display="advanced" Required="true" Mask="false">INFO</Config>
+  <Config Name="Transkripte protokollieren" Target="LOG_TRANSCRIPTS" Default="false|true" Mode="" Description="Standard false schützt erkannte Sprachinhalte. Nur für bewusste Diagnose aktivieren." Type="Variable" Display="advanced" Required="true" Mask="false">false</Config>
+  <TailscaleEnabled>false</TailscaleEnabled>
+  <TailscaleStateDir/>
+</Container>

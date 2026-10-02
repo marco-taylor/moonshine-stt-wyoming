@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools==84.0.0", "wheel==0.48.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "moonshine-stt-wyoming"
+version = "0.1.0"
+description = "Local multilingual Moonshine CPU STT over native Wyoming"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+
+requires-python = ">=3.12,<3.13"
+dependencies = ["moonshine-voice==0.1.5", "wyoming==1.10.2"]
+
+[project.urls]
+Homepage = "https://github.com/marco-taylor/moonshine-stt-wyoming"
+Repository = "https://github.com/marco-taylor/moonshine-stt-wyoming"
+Issues = "https://github.com/marco-taylor/moonshine-stt-wyoming/issues"
+
+[project.scripts]
+moonshine-stt-wyoming = "moonshine_stt_wyoming.__main__:main"
+moonshine-stt-wyoming-models = "moonshine_stt_wyoming.model_download:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+moonshine_stt_wyoming = ["model-manifest.json"]

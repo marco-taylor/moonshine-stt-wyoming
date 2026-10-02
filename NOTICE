@@ -1,0 +1,10 @@
+moonshine-stt-wyoming
+Copyright 2026 moonshine-stt-wyoming contributors
+
+Project source is licensed under Apache-2.0. Third-party components retain their
+own licenses. See THIRD_PARTY_NOTICES.md, licenses/upstream/ and the installed
+distribution .dist-info/licenses directories.
+
+The official Moonshine Voice 0.1.5 wheel is specialized by removing unused demo
+WAVs, cached agent embeddings and the demo tiny-en tokenizer; its RECORD is
+updated. STT code and native libraries are unmodified.
