@@ -17,10 +17,10 @@ Standardmodell: Small Streaming Deutsch. Nur das ausgewählte fehlende Modell wi
 
 Modelle bleiben persistent unter /app/models außerhalb des Images. Bestehende unvollständige oder beschädigte Dateien werden nicht überschrieben. Das Modellverzeichnis muss für UID/GID 99:100 lesbar und für Downloads schreibbar sein.
 
-GHCR-VORBEREITUNG: Quellcode auf GitHub veröffentlicht. GHCR-Image noch nicht veröffentlicht. Deutsch/Small ist praktisch validiert. Die übrigen registrierten Modelle sind strukturell unterstützt, aber in der aktuellen Version noch nicht praktisch validiert. Nicht für Community Applications eingereicht. Vor Start Port 10300 auf Belegung prüfen; einen bestehenden Dienst niemals verdrängen.</Overview>
+Das GHCR-Image ist veröffentlicht. Deutsch/Small wurde praktisch validiert. Die übrigen registrierten Modelle sind strukturell unterstützt, aber in der aktuellen Version noch nicht praktisch validiert. Vor Start Port 10300 auf Belegung prüfen; einen bestehenden Dienst niemals verdrängen.</Overview>
   <Category>AI: HomeAutomation:</Category>
   <ExtraSearchTerms>stt speech-to-text deutsch german moonshine home assistant wyoming</ExtraSearchTerms>
-  <Changes>GHCR-Vorbereitung: GitHub-Quellcode verfügbar; Image und Community Applications noch nicht veröffentlicht.</Changes>
+  <Changes>Erste Community-Applications-Version. GHCR-Image veröffentlicht; Deutsch/Small praktisch validiert.</Changes>
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/marco-taylor/moonshine-stt-wyoming/main/templates/moonshine-stt-wyoming.xml</TemplateURL>
   <Icon/>
@@ -31,7 +31,7 @@ GHCR-VORBEREITUNG: Quellcode auf GitHub veröffentlicht. GHCR-Image noch nicht v
   <DonateText/>
   <DonateLink/>
   <Date>2026-10-02</Date>
-  <Requires>linux/amd64, Unraid mit Docker. Initialer Modelldownload benötigt Internetzugang. Image muss nach einer späteren Veröffentlichung verfügbar sein. Wyoming bietet keine eigene Authentifizierung; nur im vertrauenswürdigen LAN bereitstellen.</Requires>
+  <Requires>linux/amd64, Unraid mit Docker. Initialer Modelldownload benötigt Internetzugang. Wyoming bietet keine eigene Authentifizierung; nur im vertrauenswürdigen LAN bereitstellen.</Requires>
   <Config Name="Wyoming-STT-Port" Target="10300" Default="10300" Mode="tcp" Description="Host-Port für Home Assistant. Standard 10300. Vor Start auf Belegung prüfen. Der interne Container-Port bleibt 10300." Type="Port" Display="always" Required="true" Mask="false">10300</Config>
   <Config Name="Moonshine-Modelle" Target="/app/models" Default="/mnt/user/appdata/moonshine-stt-wyoming/models" Mode="rw" Description="Persistenter Modellordner. Modelle bleiben bei Image-Updates erhalten. Für Downloads Schreibrechte für UID/GID 99:100 erforderlich; kein automatisches Ändern vorhandener Dateirechte." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/moonshine-stt-wyoming/models</Config>
   <Config Name="STT-Modell" Target="MOONSHINE_MODEL" Default="small-streaming-de|medium-streaming-en|small-streaming-en|small-streaming-es|small-streaming-ja|tiny-streaming-ar|tiny-streaming-de|tiny-streaming-en|tiny-streaming-es|tiny-streaming-ja|tiny-streaming-tl|tiny-streaming-vi|tiny-streaming-zh" Mode="" Description="Small Streaming Deutsch ist Standard. Bei Modellwechsel auch das Sprachfeld passend zum Suffix einstellen. Nur das ausgewählte fehlende Modell wird installiert; niemals zusätzliche Modelle." Type="Variable" Display="always" Required="true" Mask="false">small-streaming-de</Config>
