@@ -20,7 +20,16 @@ def check():
     workflow = (ROOT / ".github/workflows/docker-publish.yml").read_text()
     actions = re.findall(r"uses:\s+([^\s@]+)@([^\s#]+)", workflow)
     assert actions and all(re.fullmatch(r"[a-f0-9]{40}", sha) for _, sha in actions)
-    assert re.search(r"if:\s*>-\s+false\s*&&", workflow), "Phase 9A GHCR guard missing"
+    condition = re.search(r"^    if:\s*>-\n((?:^      .*\n)+)",
+                          workflow.split("\n  publish:\n", 1)[1], re.MULTILINE)
+    expected_condition = (
+        "github.repository == 'marco-taylor/moonshine-stt-wyoming' && "
+        "vars.RELEASE_PUBLISH_ENABLED == 'true' && "
+        "github.event_name != 'pull_request' && "
+        "(github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))"
+    )
+    assert condition and " ".join(condition.group(1).split()) == expected_condition, \
+        "GHCR publication conditions changed or missing"
     assert "vars.RELEASE_PUBLISH_ENABLED == 'true'" in workflow
     assert "environment: ghcr-release" in workflow
     assert "github.event_name != 'pull_request'" in workflow
@@ -47,7 +56,8 @@ def check():
     assert "COPY licenses /usr/share/licenses/" in docker
     assert "tiny-en/tokenizer.bin" in (ROOT / "build-support/prune_runtime.py").read_text()
     return {"passed": True, "version": version, "pinned_action_references": len(actions),
-            "models": 13, "languages": 8, "publication_enabled_by_default": False}
+            "models": 13, "languages": 8, "publication_requires_repository_opt_in": True,
+            "publication_requires_environment_review": True}
 
 
 if __name__ == "__main__":
