@@ -1,6 +1,6 @@
 # Phase 9A: GitHub-Quellcodeveröffentlichung
 
-Status: lokale Prüfungen erfolgreich; Veröffentlichung noch ausstehend. Das Zielrepository ist über den authentifizierten GitHub-Zugang nicht auffindbar (404). Die vorhandenen Connector-Werkzeuge unterstützen keine Repository-Erstellung. Eine lokale GitHub-CLI ist nicht installiert. Die bestehende SSH-Anmeldung ist nachweislich ein Deploy-Key ausschließlich für Kikiri; sie wird weder geändert noch für Moonshine umgewidmet. Für den normalen Git-Push fehlt damit zusätzlich ein eigener schreibberechtigter Zugang zum neuen Moonshine-Repository. Der Benutzer wurde um ein leeres öffentliches Zielrepository gebeten; keine Zugangsdaten angefordert oder ausgegeben.
+Status: lokale Prüfungen und separater Moonshine-SSH-Zugang erfolgreich. Das vom Benutzer bereitgestellte Repository ist über den eigenen Moonshine-Deploy-Key erreichbar; der lesende Git-Remote-Test meldet Erfolg und keine bestehenden Branch-/Tag-Referenzen. Noch kein Push. Der Benutzer verlangt nach der SSH-Prüfung eine neue ausdrückliche Freigabe für den ersten Push. Der bestehende Kikiri-Zugang bleibt unverändert.
 
 ## Ziel und Grenzen
 
@@ -20,11 +20,11 @@ Nur GitHub-Quellcode freigegeben. GHCR, GitHub Release, Veröffentlichungstags u
 
 ## Sicherheit, Datenschutz und Größe
 
-Erster Kandidat: 86 Dateien, 650.848 Bytes vor Phase-9A-Anpassungen. Größte Datei: offizielle ONNX-Runtime-ThirdPartyNotices, 326.866 Bytes. Keine unerwartet großen Dateien; keine Datei über 1 MiB. Der Bericht ergänzt eine Datei; endgültige Größe und Liste werden vor Commit nochmals überprüft.
+Erster Kandidat: 86 Dateien, 650.848 Bytes vor Phase-9A-Anpassungen. Größte Datei: offizielle ONNX-Runtime-ThirdPartyNotices, 326.866 Bytes. Keine unerwartet großen Dateien; keine Datei über 1 MiB. Der geprüfte erste Commit enthält 87 Dateien mit zusammen 662,877 Bytes (647.34 KiB). Die vollständige Liste wurde unmittelbar vor Commit aus Git gelesen und mit den tatsächlichen Index-Blobs geprüft.
 
 Prüfung sämtlicher Kandidat-Dateien und Git-Index auf private Schlüssel, GitHub-/AWS-Tokenmuster, JWT, lange Passwort-/Tokenzuweisungen, private IP-Adressen und alte Projekt-/Paketnamen: keine Treffer. E-Mail-Adressen ausschließlich in offiziellen, bewusst erhaltenen Copyright-/Lizenzattributionen. GitHub-Noreply-Adresse ist die ausdrücklich gewählte öffentliche Commit-Identität, keine private Adresse. Keine Home-Assistant-Konfiguration gelesen.
 
-.gitignore und .dockerignore schließen .validation, .venv, Modelle/Modelldateien, Testaudio, Caches, temporäre Daten, Benchmarkdaten, Buildartefakte und typische private Schlüssel-/Secretdateien aus. Historische ortsspezifische Entwicklungsberichte bleiben lokal und sind nicht Teil des Kandidaten. Docker-Kontext schließt zudem Tests/Dokumentation/Templates aus, sofern nicht für Runtime erforderlich. Lizenzhinweise bleiben bewusst erhalten. Keine Modelldateien, .validation oder Testaudiodateien im Git-Index.
+./moonshine-stt-wyoming/.gitignore und ./moonshine-stt-wyoming/.dockerignore schließen .validation, .venv, Modelle/Modelldateien, Testaudio, Caches, temporäre Daten, Benchmarkdaten, Buildartefakte und typische private Schlüssel-/Secretdateien aus. Historische ortsspezifische Entwicklungsberichte bleiben lokal und sind nicht Teil des Kandidaten. Docker-Kontext schließt zudem Tests/Dokumentation/Templates aus, sofern nicht für Runtime erforderlich. Lizenzhinweise bleiben bewusst erhalten. Keine Modelldateien, .validation oder Testaudiodateien im Git-Index.
 
 ## Release-Dateien / Tests
 
@@ -34,11 +34,11 @@ README, LICENSE/NOTICE/THIRD_PARTY_NOTICES, Dockerfile, pyproject, zentraler Mod
 
 ## Git-Identität / Commit / Remote
 
-Identität: marco-taylor mit der bereits im Kikiri-Projekt verwendeten GitHub-Noreply-Adresse, die zum bestätigten GitHub-Konto gehört. Identität nur für den neuen Repository-Kandidaten verwenden; keine globale Git-Konfiguration oder Kikiri-Konfiguration ändern. Branch main, normaler Commit und Push, kein Force-Push/History-Rewrite. Commit-ID und tatsächlicher Push-Status folgen nach Repository-Bereitstellung.
+Identität: marco-taylor mit der bereits im Kikiri-Projekt verwendeten GitHub-Noreply-Adresse, die zum bestätigten GitHub-Konto gehört. Identität nur für den neuen Repository-Kandidaten verwenden; keine globale Git-Konfiguration oder Kikiri-Konfiguration ändern. Branch main, normaler Commit und Push, kein Force-Push/History-Rewrite. Erster lokaler Commit: ed1bd024815c9b6baa47cc3f5cbe262d265c56f6. Noch kein Push. Diese Berichtsergänzung dokumentiert den vorbereiteten ersten Commit und den erfolgreichen SSH-Test in einem normalen Folgecommit vor dem ersten Push. Keine globale Git-Konfiguration verändert.
 
 ## Öffentliche Nachprüfung / GHCR
 
-Noch ausstehend: öffentliches Repository, Darstellung der README, Remote-Dateibaum/Commitvergleich und Workflow-Status. Noch kein GitHub-Push durchgeführt und kein GHCR-Image in Phase 9A veröffentlicht. GHCR-Job dauerhaft false bis gesonderter Freigabe. Keine GitHub Releases/Tags/Assets/CA-Einreichung.
+Noch ausstehend nach erneuter Push-Freigabe: Veröffentlichung des vorbereiteten Commits, Darstellung der README, Remote-Dateibaum/Commitvergleich und Workflow-Status. Noch kein GitHub-Push durchgeführt und kein GHCR-Image in Phase 9A veröffentlicht. GHCR-Job dauerhaft false bis gesonderter Freigabe. Keine GitHub Releases/Tags/Assets/CA-Einreichung.
 
 ## Vorgesehene veröffentlichte Dateien
 
@@ -137,3 +137,11 @@ Vollständige geplante Liste; endgültig mit Git-Index/Remote abzugleichen:
 ## Offene Punkte für Phase 9B
 
 Erst GitHub-Veröffentlichung und öffentliche Nachprüfung abschließen. Danach neue ausdrückliche Freigabe für GHCR einholen; erst dann die harte Publish-Sperre gezielt entfernen, Schutz/Gates konfigurieren und Image-Veröffentlichung/Pull prüfen. Finales eigenes Icon und CA-Veröffentlichung bleiben separate Aufgaben/Freigaben.
+
+## Separater SSH-Zugang
+
+Host-Alias github-moonshine; HostName github.com; User git; IdentitiesOnly yes. Eigene SSH-Konfiguration ausschließlich lokal unter ./moonshine-stt-wyoming/.validation/phase9a/ssh_config. Der bestehende gemeinsame SSH-Konfigurationspfad wurde nicht verändert. Host-Key-Prüfung streng, kein automatisches Aktualisieren bestehender Known-Hosts-Dateien. Private Schlüsseldaten wurden weder ausgegeben noch ins Repository kopiert.
+
+origin: git@github-moonshine:marco-taylor/moonshine-stt-wyoming.git. core.sshCommand ist ausschließlich im vorbereiteten Repository-Kandidaten gesetzt. Die Agent-Umgebung setzt bereits GIT_SSH_COMMAND; der lesende Git-Test verwendete deshalb ausdrücklich dieselbe projektlokale SSH-Konfiguration. Kein globales Git-Setting geändert.
+
+SSH meldet die erfolgreiche Authentifizierung ausschließlich für marco-taylor/moonshine-stt-wyoming. SSH-Exitcode 1 ist GitHubs erwarteter Hinweis auf fehlenden Shell-Zugang; der anschließende git ls-remote-Test beendet sich mit 0. Keine Schreibaktion gegen GitHub durchgeführt. Kein neuer Commit in diesem Einrichtungsschritt. Der zuvor vorbereitete Commit bleibt unverändert; ausschließlich diese geprüfte Dokumentationsaktualisierung wird in einem normalen Folgecommit festgehalten. Noch kein Push.
