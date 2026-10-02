@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommunityApplications>
+  <Profile>
+    Moonshine STT Wyoming stellt eine lokale mehrsprachige Speech-to-Text-Lösung für Home Assistant und Unraid bereit. Das Projekt verwendet die Moonshine Voice Runtime und das Wyoming-Protokoll. Standard ist Small Streaming Deutsch; Modelle werden persistent außerhalb des Containers gespeichert und bei Bedarf automatisch heruntergeladen.
+  </Profile>
+  <WebPage>https://github.com/marco-taylor/moonshine-stt-wyoming</WebPage>
+  <Forum>https://github.com/marco-taylor/moonshine-stt-wyoming/issues</Forum>
+</CommunityApplications>
