@@ -1,6 +1,6 @@
 # Moonshine STT Wyoming
 
-<img src="icons/moonshine-stt.svg" alt="Moonshine STT Wyoming" width="160">
+<img src="icons/moonshine-stt.png" alt="Moonshine STT Wyoming" width="160">
 
 Lokale Spracherkennung für Home Assistant über Wyoming, mit der offiziellen
 Moonshine Voice Runtime. CPU-only für **Linux amd64**, praktisch geprüft auf
