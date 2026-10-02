@@ -8,25 +8,21 @@ Intel N100. Eine Instanz lädt genau ein Modell für genau eine Sprache.
 Modelle liegen persistent außerhalb des Images. Tiny und weitere Sprachen werden
 nur bei ausdrücklicher Auswahl verwendet, niemals zusätzlich installiert.
 
-> Dieses Repository stellt den Quellcode bereit. Ein veröffentlichtes GHCR-Image
-> und eine Community-Applications-App sind noch **nicht verfügbar**. Docker kann
-> bereits aus dem Quellcode gebaut werden; die GHCR-/CA-Installation folgt später.
+> Das GHCR-Image ist veröffentlicht und kann direkt verwendet werden.
+> Eine Community-Applications-App ist noch **nicht verfügbar**.
 
 Projekt: https://github.com/marco-taylor/moonshine-stt-wyoming
 Image: `ghcr.io/marco-taylor/moonshine-stt-wyoming:latest`
 
-## Installation unter Docker aus dem Quellcode
+## Installation mit dem veröffentlichten GHCR-Image
 
-Aktuell gibt es noch kein veröffentlichtes GHCR-Image. Für Linux amd64 kann das
-CPU-Image lokal gebaut werden. Zuerst prüfen, dass Host-Port 10300 frei ist und der
-Modellordner für den Containerbenutzer les- und schreibbar ist. Ein Beispiel für
-Linux mit Docker und Git:
+Für Linux amd64 kann das veröffentlichte CPU-Image direkt aus GHCR verwendet werden.
+Zuerst prüfen, dass Host-Port 10300 frei ist und der Modellordner für den
+Containerbenutzer les- und schreibbar ist:
 
 ```sh
-git clone https://github.com/marco-taylor/moonshine-stt-wyoming.git
-cd moonshine-stt-wyoming
-docker build --platform linux/amd64 -t moonshine-stt-wyoming:local .
 mkdir -p models
+docker pull ghcr.io/marco-taylor/moonshine-stt-wyoming:latest
 docker run -d --name moonshine-stt-wyoming \
   --restart unless-stopped --read-only --cap-drop ALL \
   --security-opt no-new-privileges --user "$(id -u):$(id -g)" \
@@ -35,7 +31,7 @@ docker run -d --name moonshine-stt-wyoming \
   --publish 10300:10300 \
   -e MOONSHINE_MODEL=small-streaming-de -e MOONSHINE_LANGUAGE=de \
   -e MOONSHINE_AUTO_DOWNLOAD=1 -e MOONSHINE_THREADS=1 \
-  moonshine-stt-wyoming:local
+  ghcr.io/marco-taylor/moonshine-stt-wyoming:latest
 ```
 
 Das Beispiel nutzt die UID/GID des ausführenden Benutzers. Für einen Betrieb als
@@ -46,9 +42,9 @@ Hostport zuordnen, ohne einen bestehenden Dienst zu stoppen.
 
 ## Installation unter Unraid
 
-Nach Veröffentlichung die App **moonshine-stt-wyoming** in Community Applications
-suchen oder den offiziellen XML-Entwurf aus diesem Projekt in Unraid verwenden.
-Bis dahin keine vermeintlich vorhandene CA-App oder verfügbare GHCR-Version voraussetzen.
+Bis zur Veröffentlichung in Community Applications kann der offizielle XML-Entwurf
+aus diesem Projekt für Unraid verwendet werden. Das benötigte GHCR-Image ist bereits
+öffentlich verfügbar.
 
 1. Bridge-Netzwerk verwenden und einen persistenten Hostordner wählen, zum Beispiel
    `/mnt/user/appdata/moonshine-stt-wyoming/models` → `/app/models`.
@@ -192,8 +188,9 @@ Diese Messungen gelten nicht automatisch für andere Modelle oder Sprachen.
 
 ## Updates und Fehlerbehebung
 
-Bei Updates den persistenten Modellmount behalten. Nach Veröffentlichung möglichst
-versionierte `v*`-Tags oder einen Digest verwenden; `latest` folgt dem Hauptzweig.
+Bei Updates den persistenten Modellmount behalten. Für reproduzierbare Installationen
+möglichst versionierte `v*`-Tags oder einen Digest verwenden, sobald entsprechende
+Versionstags veröffentlicht sind; `latest` ist bereits verfügbar.
 Kein Docker-Prune und keine Modelllöschung als regulärer Update-Schritt.
 
 | Problem | Prüfen |
