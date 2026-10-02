@@ -48,7 +48,8 @@ jobs:
   publish:
     needs: validate
     # Phase 9A: hard-disabled, even if an inherited repository variable is true.
-    # Remove this false guard only after explicit Phase 9B GHCR approval.
+    # Remove this false guard only after explicit GHCR publication approval.
+    # Phase 9B preparation approval does not authorize publication.
     if: >-
       false &&
       github.repository == 'marco-taylor/moonshine-stt-wyoming' &&

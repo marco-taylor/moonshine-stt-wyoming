@@ -17,10 +17,10 @@ Standardmodell: Small Streaming Deutsch. Nur das ausgewählte fehlende Modell wi
 
 Modelle bleiben persistent unter /app/models außerhalb des Images. Bestehende unvollständige oder beschädigte Dateien werden nicht überschrieben. Das Modellverzeichnis muss für UID/GID 99:100 lesbar und für Downloads schreibbar sein.
 
-RELEASE-ENTWURF: GitHub/GHCR-Adressen sind geplant, noch nicht veröffentlicht. Deutsch/Small ist praktisch validiert. Die übrigen registrierten Modelle sind strukturell unterstützt, aber in der aktuellen Version noch nicht praktisch validiert. Nicht für Community Applications eingereicht. Vor Start Port 10300 auf Belegung prüfen; einen bestehenden Dienst niemals verdrängen.</Overview>
+GHCR-VORBEREITUNG: Quellcode auf GitHub veröffentlicht. GHCR-Image noch nicht veröffentlicht. Deutsch/Small ist praktisch validiert. Die übrigen registrierten Modelle sind strukturell unterstützt, aber in der aktuellen Version noch nicht praktisch validiert. Nicht für Community Applications eingereicht. Vor Start Port 10300 auf Belegung prüfen; einen bestehenden Dienst niemals verdrängen.</Overview>
   <Category>AI: HomeAutomation:</Category>
   <ExtraSearchTerms>stt speech-to-text deutsch german moonshine home assistant wyoming</ExtraSearchTerms>
-  <Changes>Lokaler Phase-8-Release-Entwurf; noch keine Veröffentlichung.</Changes>
+  <Changes>GHCR-Vorbereitung: GitHub-Quellcode verfügbar; Image und Community Applications noch nicht veröffentlicht.</Changes>
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/marco-taylor/moonshine-stt-wyoming/main/templates/moonshine-stt-wyoming.xml</TemplateURL>
   <Icon/>
